@@ -56,13 +56,18 @@ def otp_verification(request):
         otp_entered = request.POST.get('otp')
         otp_recieved= request.session.get('otp')
         print(otp_recieved)
-
-        if  otp_entered == request.session.get('otp'):
+        otp_entered = int(otp_entered)
+        print(type(otp_entered))
+        print(type(otp_recieved))
+        if  otp_entered ==otp_recieved :
             # user = CustomUser.objects.get(id=user_id)
+            print('if condition')
             messages.success(request, 'OTP verification successful. You are now logged in.')
             return redirect('login')
         else:
+            print('else condition')
             messages.error(request, 'Invalid OTP. Please try again.')
-
+        
+        print(otp_entered)
     return render(request, 'users/otp_verification.html')
 
