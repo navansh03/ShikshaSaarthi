@@ -25,7 +25,9 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 INSTALLED_APPS = [
     "home",
-    "search",
+    "users.apps.UsersConfig",
+    'crispy_forms',
+    'crispy_bootstrap5',
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.embeds",
@@ -152,6 +154,15 @@ MEDIA_URL = "/media/"
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = "ShikshaSaarthi"
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CRISPY_TEMPLATE_PACK='bootstrap5'
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+LOGIN_REDIRECT_URL='profile'
+
+LOGIN_URL='login'
 
 # Search
 # https://docs.wagtail.org/en/stable/topics/search/backends.html
