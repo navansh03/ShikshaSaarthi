@@ -6,19 +6,26 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse
 from django.shortcuts import render
+from .models import CustomUser
+
 
 def register(request):
     if request.method == 'POST':
-        form=UserRegistrationForm(request.POST)
+        form = UserRegistrationForm(request.POST)
         if form.is_valid():
-            form.save()
-            username=form.cleaned_data.get('username')
-            messages.success(request,f'Your Account has been created, you can now LogIn {username}!')
-            return redirect('login')
-    else:
-        form=UserRegistrationForm()
-    return render(request,'users/register.html',{'form':form})
+            user = form.save()
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Your account has been created, you can now log in as {username}!')
 
+            # Send OTP to the user's phone number
+            otp = form.send_otp()
+            request.session['otp'] = otp
+            request.session['user_id'] = user.id
+
+            return redirect('otp_verification')
+    else:
+        form = UserRegistrationForm()
+    return render(request, 'users/register.html', {'form': form})
 
 @login_required
 def profile(request):
@@ -43,20 +50,17 @@ def profile(request):
     # }
     return render(request,'users/profile.html')
 
+def otp_verification(request):
+    if request.method == 'POST':
+        user_id = request.session.get('user_id')
+        otp_entered = request.POST.get('otp')
 
-# from django.http import HttpResponse
-# from django.shortcuts import render
+        if user_id and otp_entered == request.session.get('otp'):
+            user = CustomUser.objects.get(id=user_id)
+            messages.success(request, 'OTP verification successful. You are now logged in.')
+            return redirect('login')
+        else:
+            messages.error(request, 'Invalid OTP. Please try again.')
 
-# import twilio.rest
+    return render(request, 'users/otp_verification.html')
 
-# def verify_phone_number(request):
-#     client = twilio.rest.Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
-
-#     phone_number = request.POST['phone_number']
-
-#     verification = client.verify.services(TWILIO_VERIFY_SERVICE_SID).verifications.create(
-#         to=phone_number,
-#         channel='sms'
-#     )
-
-#     return render(request, 'verify_phone_number.html', {'verification_id': verification.sid})
