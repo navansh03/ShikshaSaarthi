@@ -39,7 +39,8 @@ class UserRegistrationForm(UserCreationForm):
 
         message = client.messages.create(
             body=f'Your OTP is: {otp}',
-            from_='+919977566714',
+            from_='+12295751324',
             to=self.cleaned_data['phone']
         )
+        print(otp)
         return otp

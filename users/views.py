@@ -6,6 +6,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse
 from django.shortcuts import render
+from twilio.rest import Client
+
 from .models import CustomUser
 
 
@@ -21,6 +23,7 @@ def register(request):
             otp = form.send_otp()
             request.session['otp'] = otp
             request.session['user_id'] = user.id
+            print(otp)
 
             return redirect('otp_verification')
     else:
@@ -55,12 +58,25 @@ def otp_verification(request):
         user_id = request.session.get('user_id')
         otp_entered = request.POST.get('otp')
 
-        if user_id and otp_entered == request.session.get('otp'):
-            user = CustomUser.objects.get(id=user_id)
-            messages.success(request, 'OTP verification successful. You are now logged in.')
-            return redirect('login')
-        else:
-            messages.error(request, 'Invalid OTP. Please try again.')
+
+        if user_id:
+            # Initialize Twilio client
+            client = Client('ACa6fb482bd0864f78db4d8e16d7790e9e', '17044712ae4d3e60d91072e94dea15f7')
+
+            # Verify the OTP using Twilio
+            verification = client.verify \
+                .services('VAadc86ba4a22cc1806cff7c99add9e5cf') \
+                .verification_checks \
+                .create(to='+12295751324', code=otp_entered)
+
+
+        
+            if verification.status == 'approved':
+                # OTP verification successful
+                user = CustomUser.objects.get(id=user_id)
+                messages.success(request, f'OTP verification successful. Your account has been created, you can now log in as {user.username}!')
+                return redirect('login')
+            else:
+                messages.error(request, 'Invalid OTP. Please try again.')
 
     return render(request, 'users/otp_verification.html')
-
