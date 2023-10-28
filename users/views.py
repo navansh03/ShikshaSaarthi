@@ -4,6 +4,8 @@ from .forms import UserRegistrationForm
 # ,UserUpdateForm,ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
+from django.http import HttpResponse
+from django.shortcuts import render
 
 def register(request):
     if request.method == 'POST':
@@ -40,3 +42,21 @@ def profile(request):
     #     'p_form':p_form
     # }
     return render(request,'users/profile.html')
+
+
+# from django.http import HttpResponse
+# from django.shortcuts import render
+
+# import twilio.rest
+
+# def verify_phone_number(request):
+#     client = twilio.rest.Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
+
+#     phone_number = request.POST['phone_number']
+
+#     verification = client.verify.services(TWILIO_VERIFY_SERVICE_SID).verifications.create(
+#         to=phone_number,
+#         channel='sms'
+#     )
+
+#     return render(request, 'verify_phone_number.html', {'verification_id': verification.sid})

@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.urls import include, path
 from django.contrib import admin
-from home import urls as home_urls
+# from home import urls as home_urls
 from django.contrib.auth import views as auth_views
 from users import views as user_views
 from wagtail.admin import urls as wagtailadmin_urls
