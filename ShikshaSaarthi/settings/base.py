@@ -182,4 +182,5 @@ WAGTAILADMIN_BASE_URL = "http://example.com"
 TWILIO_ACCOUNT_SID = os.getenv('account_sid')
 TWILIO_AUTH_TOKEN = os.getenv('auth_token')
 TWILIO_VERIFY_SERVICE_SID = os.getenv('verify_sid') 
+TWILIO_PHONE_NUMBER=os.getenv('Twilio_phone_number')
 

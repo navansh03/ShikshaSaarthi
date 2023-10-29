@@ -31,15 +31,15 @@ class UserRegistrationForm(UserCreationForm):
         return phone
 
     def send_otp(self):
-        account_sid ='ACa6fb482bd0864f78db4d8e16d7790e9e'
-        auth_token = '17044712ae4d3e60d91072e94dea15f7'
+        account_sid = settings.TWILIO_ACCOUNT_SID
+        auth_token = settings.TWILIO_AUTH_TOKEN
         client = Client(account_sid, auth_token)
 
-        otp = random.randint(1000,9999)# Generate a random OTP here
+        otp = random.randint(0999,9999)# Generate a random OTP here
 
         message = client.messages.create(
             body=f'Your OTP is: {otp}',
-            from_='+12295751324',
+            from_= settings.TWILIO_PHONE_NUMBER,
             to=self.cleaned_data['phone']
         )
         print(otp)
