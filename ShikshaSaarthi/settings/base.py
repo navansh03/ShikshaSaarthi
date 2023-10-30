@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     "users.apps.UsersConfig",
     'crispy_forms',
     'crispy_bootstrap5',
+    'crispy_tailwind',
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.embeds",
@@ -159,8 +160,8 @@ WAGTAIL_SITE_NAME = "ShikshaSaarthi"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CRISPY_TEMPLATE_PACK='bootstrap5'
-CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK='tailwind'
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
 
 LOGIN_REDIRECT_URL='profile'
 
