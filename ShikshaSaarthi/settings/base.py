@@ -28,6 +28,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 INSTALLED_APPS = [
     "users.apps.UsersConfig",
+    'Resources',
     'crispy_forms',
     'crispy_bootstrap5',
     'crispy_tailwind',
@@ -163,7 +164,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CRISPY_TEMPLATE_PACK='tailwind'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
 
-LOGIN_REDIRECT_URL='profile'
+LOGIN_REDIRECT_URL='home'
 
 LOGIN_URL='login'
 

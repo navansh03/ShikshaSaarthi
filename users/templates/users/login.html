@@ -1,23 +1,40 @@
-{% extends "ShikshaSaarthi/base.html" %}
 {% load crispy_forms_tags %}
-{% block content %}
-        <div class="content-section">
-            <form method="POST">
-                {% csrf_token %}
-                <fieldset class="form-group">
-                    <legend class="border-bottom mb-4">Log In</legend>
-                    {{ form|crispy }}
-                </fieldset>
-                <div class="form-group">
-                    <button class="btn btn-outline-info"type="submit">LogIn</button>
-                    {% comment %} <small class="text-muted ml-2">
-                        <a href="{% url 'password_reset' %}">Forgot Password?</a>
-                    </small> {% endcomment %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<header>
+    <title>Shiksha Saarthi-Register</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static "image/apple-touch-icon.png" %}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static "images/favicon-32x32.png" %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static "images/favicon-16x16.png" %}">
+    <link rel="manifest" href="{% static "images/site.webmanifest" %}">
+    <script src="https://cdn.tailwindcss.com"></script>
+</header>
+<body>
+
+            <div class="content-section">
+                <form method="POST">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">Log In</legend>
+                        {{ form|crispy }}
+                    </fieldset>
+                    <div class="form-group">
+                        <button class="btn btn-outline-info"type="submit">LogIn</button>
+                        {% comment %} <small class="text-muted ml-2">
+                            <a href="{% url 'password_reset' %}">Forgot Password?</a>
+                        </small> {% endcomment %}
+                    </div>
+                </form> 
+                <div class="border-top pt-3">
+                    <small class="text-muted">Don't have an account? <a class="ml-2" href="{% url 'register' %}">SignUp Now</a>
+                    </small>
                 </div>
-            </form> 
-            <div class="border-top pt-3">
-                <small class="text-muted">Don't have an account? <a class="ml-2" href="{% url 'register' %}">SignUp Now</a>
-                </small>
             </div>
-        </div>
-{% endblock content %}
+
+</body>
+
+
+</html>

@@ -71,3 +71,6 @@ def otp_verification(request):
         print(otp_entered)
     return render(request, 'users/otp_verification.html')
 
+@login_required
+def landing_page(request):
+    return render(request,'users/landing_page.html')
