@@ -5,7 +5,7 @@ from . import views as resources_views
 
 
 urlpatterns = [
-    path('home/',resources_views.educational_content,name='educational_content'),
+    path('educational_content/',resources_views.educational_content,name='educational_content'),
 
 ]
 

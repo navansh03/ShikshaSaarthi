@@ -21,7 +21,7 @@ urlpatterns = [
     path('profile/',user_views.profile,name="profile"),
     path('',user_views.landing_page,name="home"),
     path('verification/',user_views.otp_verification,name='otp_verification'),
-    path('educational_resources/',include(resources_urls)),
+    path('resources/',include(resources_urls)),
 ]
 
 
