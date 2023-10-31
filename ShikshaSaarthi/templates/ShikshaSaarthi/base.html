@@ -11,12 +11,12 @@
     <title>Shiksha Saarthi</title>
     {% endif %}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/ShikshaSaarthi.css' %}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static "image/apple-touch-icon.png" %}}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static "images/favicon-32x32.png" %}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static "images/favicon-16x16.png" %}">
-    <link rel="manifest" href="{% static "images/site.webmanifest" %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'image/apple-touch-icon.png '%}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'images/site.webmanifest' %}">
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <link rel="stylesheet" href="{% static 'css/styles.css' %}"> -->
 </head>
 <body>
       <header class="site-header">
@@ -25,8 +25,9 @@
             <div class="w-full mx-auto">
                 <div class="mx-2 flex flex-wrap items-center justify-between">
                     <a href="#" class="flex">
-                        <svg class="h-10 mr-3" width="51" height="70" viewBox="0 0 51 70" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
+                        <!-- <svg class="h-10 mr-3" width="51" height="70" viewBox="0 0 51 70" fill="none"
+                            xmlns="http://www.w3.org/2000/svg"> -->
+                            <!-- LOGO TO be INSERTED -->
                             <g clip-path="url(#clip0)">
                                 <path d="M1 53H27.9022C40.6587 53 51 42.7025 51 30H24.0978C11.3412 30 1 40.2975 1 53Z"
                                     fill="#76A9FA"></path>
@@ -42,7 +43,7 @@
                                 </clipPath>
                             </defs>
                         </svg>
-                        <span class="self-center text-lg font-semibold whitespace-nowrap">FlowBite</span>
+                        <span class="self-center text-lg font-semibold whitespace-nowrap">Shiksha Saarthi</span>
                     </a>
                     <div class="flex md:hidden md:order-2">
                         <button data-collapse-toggle="mobile-menu-3" type="button"
@@ -73,20 +74,20 @@
                               </button>
                             </li>
                             <li>
-                              <button class="cursor-pointer transition-all bg-blue-500 text-white px-6 py-2 rounded-lg
-                                border-blue-600
-                                border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px]
-                                active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">
-                                <a href="#" class="text-gray-700 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-blue-700 md:p-0">Resources</a>
-                                </button>
-                            </li>
-                            <li>
-                              <button class="cursor-pointer transition-all bg-blue-500 text-white px-6 py-2 rounded-lg
+                                <button class="cursor-pointer transition-all bg-blue-500 text-white px-6 py-2 rounded-lg
                               border-blue-600
                               border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px]
                               active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">
-                              <a href="#" class="text-gray-700 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-blue-700 md:p-0">LOGOUT</a>
-                              </button>  
+                              <a href="#" class="bg-blue-700 md:bg-transparent text-white block pl-3 pr-4 py-2 md:text-blue-700 md:p-0 rounded">Resources</a>
+                              </button>
+                            </li>
+                            <li>
+                                <button class="cursor-pointer transition-all bg-blue-500 text-white px-6 py-2 rounded-lg
+                              border-blue-600
+                              border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px]
+                              active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">
+                              <a href="{% url 'logout' %}" class="bg-blue-700 md:bg-transparent text-white block pl-3 pr-4 py-2 md:text-blue-700 md:p-0 rounded nav-item nav-link">Logout</a>
+                              </button>
                             </li>
                         </ul>
                     </div>
@@ -99,14 +100,15 @@
             <div class="navbar-nav">
                         {% if user.is_authenticated %}
                           {% comment %} <a class="nav-item nav-link" href="{% url 'post-create' %}">New Post</a> {% endcomment %}
-                          <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
-                          <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+                          <!-- <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a> -->
                         {% else %}
                           <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
                           <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
                         {% endif %}
             </div>
       </header>
+
+
       <main role="main" class="container">
         <div class="row">
           <div class="col-md-8">
@@ -118,9 +120,10 @@
               {% endfor %}
             {% endif %}
             {% block content %}{% endblock %}
-          </div>
         </div>
-      </main>
+    </div>
+</main>
+{% block body %}{% endblock %}
       
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
@@ -128,7 +131,7 @@
     <script src="{% static "js/ShikshaSaarthi.js" %}"></script>
 
     <!-- component -->
-<div class="flex items-end w-full min-h-screen bg-white">
+<!-- <div class="flex items-end w-full min-h-screen bg-white"> -->
 
   <footer class="w-full text-gray-700 bg-gray-100 body-font">
       <div
@@ -243,6 +246,6 @@
       </div>
   </footer>
 
-</div>
+<!-- </div> -->
 </body>
 </html>
