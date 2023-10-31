@@ -1,8 +1,15 @@
-{% extends "ShikshaSaarthi/base.html" %}
+{% extends 'ShikshaSaarthi/base.html' %}
+{% load static %}
 {% block content %}
-<h1>
-    Arnav ko kuch nhi aata!!
-</h1>
-
-
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
 {% endblock content %}
+
+{% block body %}
+
+<div class="panel-1">
+    Back to top
+</div> 
+
+
+
+{% endblock %}
