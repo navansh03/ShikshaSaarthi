@@ -9,12 +9,11 @@
 }
 
 .panel-1{
-    height: 200px;
-    background-color:#000000; ;
+    height: 260px;
+    background-color:#FFFFFF; ;
     color: white;
     font-size: 13px;
     display: flex;
     justify-content: center;
     align-items: center;
-    
 }
