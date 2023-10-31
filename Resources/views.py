@@ -6,5 +6,5 @@ from .models import Course
 
 def educational_content(request):
     courses=Course.objects.all()
-    return render(request,template_name="educational_content.html",context={"courses":courses})
+    return render(request,template_name="Resources/educational_content.html",context={"courses":courses})
 

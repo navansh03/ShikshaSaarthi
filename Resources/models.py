@@ -5,8 +5,8 @@ class Course(models.Model):
     description= models.CharField(max_length=200,null=True)
     active=models.BooleanField(default=False)
     
-    def _str_(self):
-        return self.name
+    def __str__(self):
+        return f"{self.name}"
 
 class CourseProperty(models.Model):
     description=models.CharField(max_length=20,null=False)

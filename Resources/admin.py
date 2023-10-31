@@ -14,7 +14,7 @@ class PrerequisitesAdmin(admin.TabularInline):
 class VideoAdmin(admin.StackedInline):
     model=Video
 class CourseAdmin(admin.ModelAdmin):
-    inlines =[ LearningAdmin, PrerequisitesAdmin,VideoAdmin]
+    inlines =[ LearningAdmin, PrerequisitesAdmin, VideoAdmin]
 
 
 
