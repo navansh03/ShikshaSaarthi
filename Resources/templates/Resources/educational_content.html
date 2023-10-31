@@ -1,6 +1,9 @@
 {% extends "ShikshaSaarthi/base.html" %}
 {% block content %}
-    <h2>
+    <h2>Courses</h1>
+    {% for o in courses %}
+        <h1>{{o}},{{o.description}}</h1>
+    {% endfor %}
 
 {% endblock content %}
 

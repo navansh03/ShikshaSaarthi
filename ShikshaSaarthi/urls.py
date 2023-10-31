@@ -4,13 +4,15 @@ from django.contrib import admin
 # from home import urls as home_urls
 from django.contrib.auth import views as auth_views
 from users import views as user_views
+from Resources import views as resources_views
 from wagtail.admin import urls as wagtailadmin_urls
+from Resources import urls as resources_urls
 from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
 urlpatterns = [
-    path("django-admin/", admin.site.urls),
-    path("admin/", include(wagtailadmin_urls)),
+    path("admin/", admin.site.urls),
+    path("wagtail-admin/", include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),
     path('register/',user_views.register,name="register"),
     # path('',include(home_urls)),
@@ -19,6 +21,7 @@ urlpatterns = [
     path('profile/',user_views.profile,name="profile"),
     path('',user_views.landing_page,name="home"),
     path('verification/',user_views.otp_verification,name='otp_verification'),
+    path('educational_resources/',include(resources_urls)),
 ]
 
 
