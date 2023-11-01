@@ -87,12 +87,12 @@
                                         <!-- Search input -->
                                         <input id="search-input" class="block w-full px-4 py-2 text-gray-800 border rounded-md  border-gray-300 focus:outline-none" type="text" placeholder="Search items" autocomplete="off">
                                         <!-- Dropdown content goes here -->
-                                        <a href="/Resources/templates/Resources/educational_content.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md">Education</a>
-                                        <a href="/Resources/templates/" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md">Mentor</a>
-                                        <a href="/Resources/templates/Resources/news.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md">News</a>
-                                        <a href="/Resources/templates/Resources/job_listings.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md">Job Listings</a>
-                                        <a href="/Resources/templates/Resources/gov_documentation.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md">Policies/Documentation</a>
-                                        <a href="/Resources/templates/Resources/contact_us.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md">Contact Us</a>
+                                        <a href="{% url 'educational_content' %}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md">Education</a>
+                                        <a href="{% url 'mentor' %}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md">Mentor</a>
+                                        <a href="{% url 'news' %}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md">News</a>
+                                        <a href="{% url 'job_listings' %}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md">Job Listings</a>
+                                        <a href="{% url 'gov_documentation' %}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md">Policies/Documentation</a>
+                                        <a href="{% url 'contact_us' %}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md">Contact Us</a>
                                     </div>
                                     </div>
                                 </div>

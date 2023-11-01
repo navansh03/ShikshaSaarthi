@@ -30,3 +30,21 @@ def VideoPlayer(request,slug,video_number):
     }
     return render(request,template_name="Resources/video_player.html",context=context)
 
+
+def job_listings(request):
+    return render(request,template_name='Resources/job_listings.html')
+
+
+def gov_documentations(request):
+    return render(request,template_name='Resources/gov_documentations.html')
+
+def mentor(request):
+    return render(request,template_name='Resources/mentor.html')
+
+def news(request):
+    return render(request,template_name='Resources/news.html')
+
+def contact_us(request):
+    return render(request,template_name='Resources/contact_us.html')
+
+
