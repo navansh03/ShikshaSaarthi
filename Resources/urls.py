@@ -6,7 +6,7 @@ from . import views as resources_views
 
 urlpatterns = [
     path('educational_content/',resources_views.educational_content,name='educational_content'),
-    path('course/<str:slug>',resources_views.CourseOverview,name='coursepage'),
+    path('course/<str:slug>/',resources_views.CourseOverview,name='coursepage'),
 
 ]
 
