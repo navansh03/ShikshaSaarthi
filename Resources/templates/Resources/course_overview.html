@@ -1,0 +1,46 @@
+{% extends "ShikshaSaarthi/base.html" %}
+{% block content %}
+
+    <h1>Selected Course: {{slug}}
+
+
+        <div class="w-1/4 p-4 bg-white rounded shadow-lg">
+            <h2 class="text-2xl font-semibold mb-4">Links</h2>
+            <ul>
+                <li class="mb-2">
+                    <a href="" class="text-blue-500 hover:underline">Link 1</a>
+                </li>
+                <li class="mb-2">
+                    <a href="#" class="text-blue-500 hover:underline">Link 2</a>
+                </li>
+                <li class="mb-2">
+                    <a href="#" class="text-blue-500 hover:underline">Link 3</a>
+                </li>
+                <li class="mb-2">
+                    <a href="#" class="text-blue-500 hover:underline">Link 4</a>
+                </li>
+            </ul>
+        </div>
+
+<script>
+    var player;
+
+    document.onreadystatechange=function(){
+        if(document.readystate=='interactive'){
+            player=document.getElementById("player")
+            maintainRatio()
+        }
+
+
+    }
+    function maintainRatio(){
+        var w=player.clientWidth
+        var h= (w*9)/16
+        console.log({w,h});
+        player.height=h1
+    }
+    window.onresize=maintainRatio
+
+</script>
+
+{% endblock content %}
