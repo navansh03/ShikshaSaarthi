@@ -31,8 +31,9 @@ class Learning(CourseProperty):
 class Video(models.Model):
     title= models.CharField(max_length=100,null=False)
     course=models.ForeignKey(Course,null=False,on_delete=models.CASCADE)
-    slug=models.CharField(max_length=100,null=True)
-    serial_number=models.IntegerField(null=False)
+    slug2=models.CharField(max_length=100,null=True)
+    serial_number=models.IntegerField(null=False,unique=True,default=999)
+    video_number=models.IntegerField(null=False,default=0)
     video_url=models.CharField(max_length=150,null=False,default=0)
     is_preview=models.BooleanField(default=False)
 
