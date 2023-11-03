@@ -1,11 +1,12 @@
 {% extends "ShikshaSaarthi/base.html" %}
 {% load static %}
-{% block message %}
+{% block content %}
 
 <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
-    <span class="job-card" style="display: flex; flex-direction: row; justify-content: space-evenly;">
-        <div class="relative group duration-500 cursor-pointer group overflow-hidden relative text-gray-50 h-72 w-56 rounded-2xl hover:duration-700 duration-700">
+    <span class="job-card" style="display: flex; flex-direction: row; justify-content: space-evenly; flex-wrap: wrap; width: 1200px;
+    height: 900px; align-content: space-evenly;">
+        <div class="relative group duration-500 cursor-pointer group overflow-hidden relative text-gray-50 h-72 w-56 rounded-2xl hover:duration-700 duration-700" style="display: flex; margin-left: 40px; margin-right: 40px; min-width: 225px;">
             <div class="w-56 h-72 bg-blue-400 text-blue-800">
               <div class="flex flex-row justify-between">
                 <svg class="fill-current stroke-current w-8 h-8 p-2 hover:bg-blue-200 rounded-full m-1" height="100" preserveAspectRatio="xMidYMid meet" viewBox="0 0 100 100" width="100" x="0" xmlns="http://www.w3.org/2000/svg" y="0">
@@ -20,14 +21,14 @@
             </div>
             <div class="absolute bg-blue-50 -bottom-24 w-56 p-3 flex flex-col gap-1 group-hover:-bottom-0 group-hover:duration-600 duration-500">
               <span class="text-blue-400 font-bold text-xs">Teacher</span> 
-              <span class="text-blue-800 font-bold text-3xl">Cheat Sheet</span> 
-              <p class="text-neutral-800">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <span class="text-blue-800 font-bold text-3xl">Teacher</span> 
+              <p class="text-neutral-800">avg. salary: <br> ₹2,75,000/year</p>
             </div>
           </div>          
     <!-- </span>
 
     <span class="job-card" style="display: inline;"> -->
-        <div class="relative group duration-500 cursor-pointer group overflow-hidden relative text-gray-50 h-72 w-56 rounded-2xl hover:duration-700 duration-700">
+        <div class="relative group duration-500 cursor-pointer group overflow-hidden relative text-gray-50 h-72 w-56 rounded-2xl hover:duration-700 duration-700" style="display: flex; margin-left: 40px; margin-right: 40px;">
             <div class="w-56 h-72 bg-blue-400 text-blue-800">
               <div class="flex flex-row justify-between">
                 <svg class="fill-current stroke-current w-8 h-8 p-2 hover:bg-blue-200 rounded-full m-1" height="100" preserveAspectRatio="xMidYMid meet" viewBox="0 0 100 100" width="100" x="0" xmlns="http://www.w3.org/2000/svg" y="0">
@@ -41,15 +42,15 @@
               </div>
             </div>
             <div class="absolute bg-blue-50 -bottom-24 w-56 p-3 flex flex-col gap-1 group-hover:-bottom-0 group-hover:duration-600 duration-500">
-              <span class="text-blue-400 font-bold text-xs">Teacher</span> 
-              <span class="text-blue-800 font-bold text-3xl">Cheat Sheet</span> 
-              <p class="text-neutral-800">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <span class="text-blue-400 font-bold text-xs">Accountant</span> 
+              <span class="text-blue-800 font-bold text-3xl">Accountant</span> 
+              <p class="text-neutral-800">avg. salary: <br> ₹3,30,000/year</p>
             </div>
           </div>          
         <!-- </span>
 
     <div class="job-card"> -->
-        <div class="relative group duration-500 cursor-pointer group overflow-hidden relative text-gray-50 h-72 w-56 rounded-2xl hover:duration-700 duration-700">
+        <div class="relative group duration-500 cursor-pointer group overflow-hidden relative text-gray-50 h-72 w-56 rounded-2xl hover:duration-700 duration-700" style="display: flex; margin-left: 40px; margin-right: 40px;">
             <div class="w-56 h-72 bg-blue-400 text-blue-800">
               <div class="flex flex-row justify-between">
                 <svg class="fill-current stroke-current w-8 h-8 p-2 hover:bg-blue-200 rounded-full m-1" height="100" preserveAspectRatio="xMidYMid meet" viewBox="0 0 100 100" width="100" x="0" xmlns="http://www.w3.org/2000/svg" y="0">
@@ -63,15 +64,15 @@
               </div>
             </div>
             <div class="absolute bg-blue-50 -bottom-24 w-56 p-3 flex flex-col gap-1 group-hover:-bottom-0 group-hover:duration-600 duration-500">
-              <span class="text-blue-400 font-bold text-xs">Teacher</span> 
-              <span class="text-blue-800 font-bold text-3xl">Cheat Sheet</span> 
-              <p class="text-neutral-800">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <span class="text-blue-400 font-bold text-xs">Assistant</span> 
+              <span class="text-blue-800 font-bold text-3xl">Assistant</span> 
+              <p class="text-neutral-800">avg. salary: ₹1,84,159/year</p>
             </div>
           </div>          
-        </span>
+        <!-- </span> -->
 
-        <span class="job-card" style="display: flex; flex-direction: row; justify-content: space-evenly;">
-          <div class="relative group duration-500 cursor-pointer group overflow-hidden relative text-gray-50 h-72 w-56 rounded-2xl hover:duration-700 duration-700">
+        <!-- <span class="job-card" style="display: flex; flex-direction: row; justify-content: space-evenly;"> -->
+          <div class="relative group duration-500 cursor-pointer group overflow-hidden relative text-gray-50 h-72 w-56 rounded-2xl hover:duration-700 duration-700" style="display: flex; margin-left: 40px; margin-right: 40px;">
               <div class="w-56 h-72 bg-blue-400 text-blue-800">
                 <div class="flex flex-row justify-between">
                   <svg class="fill-current stroke-current w-8 h-8 p-2 hover:bg-blue-200 rounded-full m-1" height="100" preserveAspectRatio="xMidYMid meet" viewBox="0 0 100 100" width="100" x="0" xmlns="http://www.w3.org/2000/svg" y="0">
@@ -85,15 +86,15 @@
                 </div>
               </div>
               <div class="absolute bg-blue-50 -bottom-24 w-56 p-3 flex flex-col gap-1 group-hover:-bottom-0 group-hover:duration-600 duration-500">
-                <span class="text-blue-400 font-bold text-xs">Teacher</span> 
-                <span class="text-blue-800 font-bold text-3xl">Cheat Sheet</span> 
+                <span class="text-blue-400 font-bold text-xs">Manager</span> 
+                <span class="text-blue-800 font-bold text-3xl">Manager</span> 
                 <p class="text-neutral-800">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
               </div>
             </div>          
       <!-- </span>
   
       <span class="job-card" style="display: inline;"> -->
-          <div class="relative group duration-500 cursor-pointer group overflow-hidden relative text-gray-50 h-72 w-56 rounded-2xl hover:duration-700 duration-700">
+          <div class="relative group duration-500 cursor-pointer group overflow-hidden relative text-gray-50 h-72 w-56 rounded-2xl hover:duration-700 duration-700" style="display: flex; margin-left: 40px; margin-right: 40px;">
               <div class="w-56 h-72 bg-blue-400 text-blue-800">
                 <div class="flex flex-row justify-between">
                   <svg class="fill-current stroke-current w-8 h-8 p-2 hover:bg-blue-200 rounded-full m-1" height="100" preserveAspectRatio="xMidYMid meet" viewBox="0 0 100 100" width="100" x="0" xmlns="http://www.w3.org/2000/svg" y="0">
@@ -107,15 +108,15 @@
                 </div>
               </div>
               <div class="absolute bg-blue-50 -bottom-24 w-56 p-3 flex flex-col gap-1 group-hover:-bottom-0 group-hover:duration-600 duration-500">
-                <span class="text-blue-400 font-bold text-xs">Teacher</span> 
-                <span class="text-blue-800 font-bold text-3xl">Cheat Sheet</span> 
-                <p class="text-neutral-800">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <span class="text-blue-400 font-bold text-xs">Nurse</span> 
+                <span class="text-blue-800 font-bold text-3xl">Nurse</span> 
+                <p class="text-neutral-800"><br> avg. salary: ₹2,82,785/year</p>
               </div>
             </div>          
           <!-- </span>
   
       <div class="job-card"> -->
-          <div class="relative group duration-500 cursor-pointer group overflow-hidden relative text-gray-50 h-72 w-56 rounded-2xl hover:duration-700 duration-700">
+          <div class="relative group duration-500 cursor-pointer group overflow-hidden relative text-gray-50 h-72 w-56 rounded-2xl hover:duration-700 duration-700" style="display: flex; margin-left: 40px; margin-right: 40px;">
               <div class="w-56 h-72 bg-blue-400 text-blue-800">
                 <div class="flex flex-row justify-between">
                   <svg class="fill-current stroke-current w-8 h-8 p-2 hover:bg-blue-200 rounded-full m-1" height="100" preserveAspectRatio="xMidYMid meet" viewBox="0 0 100 100" width="100" x="0" xmlns="http://www.w3.org/2000/svg" y="0">
@@ -128,10 +129,10 @@
                   </svg>
                 </div>
               </div>
-              <div class="absolute bg-blue-50 -bottom-24 w-56 p-3 flex flex-col gap-1 group-hover:-bottom-0 group-hover:duration-600 duration-500">
-                <span class="text-blue-400 font-bold text-xs">Teacher</span> 
-                <span class="text-blue-800 font-bold text-3xl">Cheat Sheet</span> 
-                <p class="text-neutral-800">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <div class="absolute bg-blue-50 -bottom-24 w-56 p-3 flex flex-col gap-1 group-hover:-bottom-0 group-hover:duration-800 duration-500">
+                <span class="text-blue-400 font-bold text-xs">Software Engineer</span> 
+                <span class="text-blue-800 font-bold text-3xl">Software Engineer</span> 
+                <p class="text-neutral-800">avg. salary: ₹5,38,321/year</p>
               </div>
             </div>          
           </span>

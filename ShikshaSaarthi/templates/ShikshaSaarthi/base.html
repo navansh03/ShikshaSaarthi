@@ -10,6 +10,7 @@
     {% else %}
     <title>Shiksha Saarthi</title>
     {% endif %}
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'image/apple-touch-icon.png '%}">
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
@@ -17,7 +18,6 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon-16x16.png' %}">
     <link rel="manifest" href="{% static 'images/site.webmanifest' %}">
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet"href="{% static 'fonts/fontawesome/fontawesome.css' %}">
     <link rel="stylesheet"href="{% static 'libs/%40fancyapps/fancybox/dist/jquery.fancybox.min.css' %}">
     <link rel="stylesheet"href="{% static 'libs/aos/dist/aos.css' %}">
@@ -173,32 +173,33 @@
             </div>
       </header>
 
-
       <main role="main" class="container">
-        <div class="row">
-            {% block message %}{% endblock %}
-          <div class="col-md-8">
-            {% if messages %}
-              {% for message in messages %}
-                <div class="alert alert-{{message.tags}}">
-                  {{ message }}
+          <div class="row">
+              {% block message %}{% endblock %}
+              <div class="col-md-8">
+                  {% if messages %}
+                  {% for message in messages %}
+                  <div class="alert alert-{{message.tags}}">
+                      {{ message }}
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    {% block content %}{% endblock %}
                 </div>
-              {% endfor %}
-            {% endif %}
-            {% block content %}{% endblock %}
-        </div>
-    </div>
-</main>
-{% block body %}{% endblock %}
-      
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script src="{% static "js/ShikshaSaarthi.js" %}"></script>
-
+            </div>
+        </main>
+        {% block panel %}{% endblock %}
+        {% block carousel %}{% endblock %}
+        
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <script src="{% static "js/ShikshaSaarthi.js" %}"></script>
+        
     <!-- component -->
-<!-- <div class="flex items-end w-full min-h-screen bg-white"> -->
-
+    <!-- <div class="flex items-end w-full min-h-screen bg-white"> -->
+    
+    
   <footer class="w-full text-gray-700 bg-gray-100 body-font">
       <div
           class="container flex flex-col flex-wrap px-5 py-24 mx-auto md:items-center lg:items-start md:flex-row md:flex-no-wrap">
@@ -322,7 +323,5 @@
                     }, 'google_translate_element');
                 }  
             </script>
-            
-<!-- </div> -->
 </body>
-</html>
+</html> 

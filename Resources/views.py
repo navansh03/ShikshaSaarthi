@@ -44,7 +44,7 @@ def job_listings(request):
 
 
 def gov_documentations(request):
-    return render(request,template_name='Resources/gov_documentations.html')
+    return render(request,template_name='Resources/gov_documentation.html')
 
 def mentor(request):
     return render(request,template_name='Resources/mentor.html')
