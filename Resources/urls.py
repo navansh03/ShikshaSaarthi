@@ -7,6 +7,14 @@ from . import views as resources_views
 urlpatterns = [
     path('educational_content/',resources_views.educational_content,name='educational_content'),
     path('course/<str:slug>/',resources_views.CourseOverview,name='coursepage'),
+    path('job-listings/',resources_views.job_listings,name='job_listings'),
+    path('contact_us/',resources_views.contact_us,name='contact_us'),
+    path('mentor/',resources_views.mentor,name='mentor'),
+    path('news/',resources_views.news,name='news'),
+    path('gov_documentation/',resources_views.gov_documentations,name='gov_documentation'),
+    path('course/checkout/<slug:slug>',resources_views.Checkout,name='checkout'),
+         
+
 
 ]
 

@@ -12,11 +12,24 @@
     {% endif %}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'image/apple-touch-icon.png '%}">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&amp;family=Lora:wght@400;700&amp;family=Montserrat:wght@400;500;600;700&amp;family=Nunito:wght@400;700&amp;display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon-16x16.png' %}">
     <link rel="manifest" href="{% static 'images/site.webmanifest' %}">
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- <link rel="stylesheet" href="{% static 'css/styles.css' %}"> -->
+    <link rel="stylesheet"href="{% static 'fonts/fontawesome/fontawesome.css' %}">
+    <link rel="stylesheet"href="{% static 'libs/%40fancyapps/fancybox/dist/jquery.fancybox.min.css' %}">
+    <link rel="stylesheet"href="{% static 'libs/aos/dist/aos.css' %}">
+    <link rel="stylesheet"href="{% static 'libs/choices.js/public/assets/styles/choices.min.css' %}">
+    <link rel="stylesheet"href="{% static 'libs/flickity-fade/flickity-fade.css' %}">
+    <link rel="stylesheet"href="{% static 'libs/flickity-fade/flickity-fade.css' %}">
+    <link rel="stylesheet"href="{% static 'libs/flickity/dist/flickity.min.css' %}">
+    <link rel="stylesheet"href="{% static 'libs/highlightjs/styles/vs2015.css' %}">
+    <link rel="stylesheet"href="{% static 'libs/jarallax/dist/jarallax.css' %}">
+    <link rel="stylesheet"href="{% static 'libs/quill/dist/quill.core.css' %}">
+    <link rel="stylesheet"href="{% static 'css/theme.min.css' %}">
+
 </head>
 <body>
       <header class="site-header">
@@ -74,12 +87,64 @@
                               </button>
                             </li>
                             <li>
-                                <button class="cursor-pointer transition-all bg-blue-500 text-white px-6 py-2 rounded-lg
-                              border-blue-600
-                              border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px]
-                              active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">
-                              <a href="#" class="bg-blue-700 md:bg-transparent text-white block pl-3 pr-4 py-2 md:text-blue-700 md:p-0 rounded">Resources</a>
-                              </button>
+                                <!-- dropdown -->
+                                <div class="min-h-screen flex items-center justify-center" style="min-height:9vh;">
+                                    <div class="relative group">
+                                    <button id="dropdown-button" class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500">
+                                        <span class="mr-2">Resources</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-2 -mr-1" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path fill-rule="evenodd" d="M6.293 9.293a1 1 0 011.414 0L10 11.586l2.293-2.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                        </svg>
+                                    </button>
+                                    <div id="dropdown-menu" class="hidden absolute right-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 p-1 space-y-1">
+                                        <!-- Search input -->
+                                        <input id="search-input" class="block w-full px-4 py-2 text-gray-800 border rounded-md  border-gray-300 focus:outline-none" type="text" placeholder="Search items" autocomplete="off">
+                                        <!-- Dropdown content goes here -->
+                                        <a href="{% url 'educational_content' %}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md">Education</a>
+                                        <a href="{% url 'mentor' %}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md">Mentor</a>
+                                        <a href="{% url 'news' %}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md">News</a>
+                                        <a href="{% url 'job_listings' %}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md">Job Listings</a>
+                                        <a href="{% url 'gov_documentation' %}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md">Policies/Documentation</a>
+                                        <a href="{% url 'contact_us' %}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md">Contact Us</a>
+                                    </div>
+                                    </div>
+                                </div>
+                                <script>
+                                // JavaScript to toggle the dropdown
+                                    const dropdownButton = document.getElementById('dropdown-button');
+                                    const dropdownMenu = document.getElementById('dropdown-menu');
+                                    const searchInput = document.getElementById('search-input');
+                                    let isOpen = false; // Set to true to open the dropdown by default
+                                    
+                                    // Function to toggle the dropdown state
+                                    function toggleDropdown() {
+                                        isOpen = !isOpen;
+                                        dropdownMenu.classList.toggle('hidden', !isOpen);
+                                    }
+                                    
+                                    // Set initial state
+                                    toggleDropdown();
+                                    
+                                    dropdownButton.addEventListener('click', () => {
+                                        toggleDropdown();
+                                    });
+                                    
+                                    // Add event listener to filter items based on input
+                                    searchInput.addEventListener('input', () => {
+                                        const searchTerm = searchInput.value.toLowerCase();
+                                        const items = dropdownMenu.querySelectorAll('a');
+                                    
+                                        items.forEach((item) => {
+                                        const text = item.textContent.toLowerCase();
+                                        if (text.includes(searchTerm)) {
+                                            item.style.display = 'block';
+                                        } else {
+                                            item.style.display = 'none';
+                                        }
+                                        });
+                                    });
+                                </script>
+                                                            
                             </li>
                             <li>
                                 <button class="cursor-pointer transition-all bg-blue-500 text-white px-6 py-2 rounded-lg
@@ -111,6 +176,7 @@
 
       <main role="main" class="container">
         <div class="row">
+            {% block message %}{% endblock %}
           <div class="col-md-8">
             {% if messages %}
               {% for message in messages %}
@@ -256,6 +322,7 @@
                     }, 'google_translate_element');
                 }  
             </script>
+            
 <!-- </div> -->
 </body>
 </html>
