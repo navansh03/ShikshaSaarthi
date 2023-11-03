@@ -32,16 +32,16 @@
 
 </head>
 <body>
-      <header class="site-header"  >
+      <header class="siteheader" >
         <!-- component -->
-          <nav class="border-gray-200 mb-10">
-            <div class="w-full mx-auto">
+          <!-- <nav class="border-gray-200 mb-10 navmar"> -->
+            <div class="w-full mx-auto ">
                 <div class="mx-2 flex flex-wrap items-center justify-between">
                     <a href="#" class="flex">
                         <!-- <svg class="h-10 mr-3" width="51" height="70" viewBox="0 0 51 70" fill="none"
                             xmlns="http://www.w3.org/2000/svg"> -->
                             <!-- LOGO TO be INSERTED -->
-                            <g clip-path="url(#clip0)">
+                            <!-- <g clip-path="url(#clip0)">
                                 <path d="M1 53H27.9022C40.6587 53 51 42.7025 51 30H24.0978C11.3412 30 1 40.2975 1 53Z"
                                     fill="#76A9FA"></path>
                                 <path
@@ -49,14 +49,20 @@
                                     fill="#A4CAFE"></path>
                                 <path d="M50 5H23.0978C10.3413 5 0 15.2975 0 28H26.9022C39.6588 28 50 17.7025 50 5Z"
                                     fill="#1C64F2"></path>
-                            </g>
+                            </g> -->
                             <defs>
                                 <clipPath id="clip0">
                                     <rect width="51" height="70" fill="white"></rect>
                                 </clipPath>
                             </defs>
                         </svg>
-                        <span class="self-center text-lg font-semibold whitespace-nowrap">Shiksha Saarthi</span>
+                        <div  style=" position: absolute;
+                        margin-left: 60px;">
+                            <a href="{% url 'home' %}" class="flex justify-left">
+                                <img src="{% static 'images/Logo_text.png' %}" alt="Your Logo" class="h-10 mr-3" /> <!-- Add your logo image here -->
+                            </a>
+                        </div>
+                       
                     </a>
                     <div class="flex md:hidden md:order-2">
                         <button data-collapse-toggle="mobile-menu-3" type="button"
@@ -76,7 +82,7 @@
                             </svg>
                         </button>
                     </div>
-                    <div class="hidden md:flex justify-between items-end w-full md:w-auto md:order-1" id="mobile-menu-3">
+                    <div class="hidden md:flex justify-between items-end w-full md:w-auto md:order-1" id="mobile-menu-3" style="margin-right: 80px;">
                         <ul class="flex-col md:flex-row flex md:space-x-8 mt-4 md:mt-0 md:text-sm md:font-medium">
                             <li>
                               <button class="cursor-pointer transition-all bg-blue-500 text-white px-6 py-2 rounded-lg
@@ -96,7 +102,7 @@
                                         <path fill-rule="evenodd" d="M6.293 9.293a1 1 0 011.414 0L10 11.586l2.293-2.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
                                         </svg>
                                     </button>
-                                    <div id="dropdown-menu" class="hidden absolute right-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 p-1 space-y-1" script=".my-dropdown-menu {
+                                    <div id="dropdown-menu" class="hidden absolute right-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 p-1 space-y-1 z-index-1" script=".my-dropdown-menu {
                                         position: absolute;
                                         z-index: 1000; 
                                     }">
@@ -117,7 +123,7 @@
                                     const dropdownButton = document.getElementById('dropdown-button');
                                     const dropdownMenu = document.getElementById('dropdown-menu');
                                     const searchInput = document.getElementById('search-input');
-                                    let isOpen = false; // Set to true to open the dropdown by default
+                                    let isOpen = true; // Set to true to open the dropdown by default
                                     
                                     // Function to toggle the dropdown state
                                     function toggleDropdown() {
@@ -161,7 +167,7 @@
                     </div>
                 </div>
             </div>
-          </nav>
+          <!-- </nav> -->
           <script src="https://unpkg.com/@themesberg/flowbite@1.1.1/dist/flowbite.bundle.js"></script>
         
           <!-- Navbar Right Side -->
@@ -176,9 +182,8 @@
             </div>
       </header>
 
-      <main role="main" class="container">
+      <!-- <main role="main" class="container">
           <div class="row">
-              {% block message %}{% endblock %}
               <div>
                   {% if messages %}
                   {% for message in messages %}
@@ -187,17 +192,31 @@
                     </div>
                     {% endfor %}
                     {% endif %}
-                    {% block content %}{% endblock %}
                 </div>
             </div>
-        </main>
+        </main> -->
+
+       
+            <div class="row" style=" width: 100%; height: 1000px; background-image: url(https://images.squarespace-cdn.com/content/v1/5421b6e2e4b0a6db313b8b24/1613932175243-LWAQF519CTRPKQN4XJVC/image-from-rawpixel-id-2620215-jpeg.jpg); background-size: cover;">
+                {% block content %}
+                  {% if messages %}
+                  {% for message in messages %}
+                        <div class="alert alert-{{message.tags}}">
+                            {{ message }}
+                          </div>
+                  {% endfor %}
+                  {% endif %}
+                {% endblock %}
+            </div>
+
+        {% block message %}{% endblock %}
         {% block panel %}{% endblock %}
         {% block carousel %}{% endblock %}
         
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-        <script src="{% static "js/index.js" %}"></script>
+        <script src="{% static 'js/index.js' %}"></script>
         
     <!-- component -->
     <!-- <div class="flex items-end w-full min-h-screen bg-white"> -->
@@ -294,17 +313,20 @@
                   </nav>
               </div>
               <div class="w-full px-4 lg:w-1/4 md:w-1/2">
-                  <h2 class="mb-3 text-sm font-medium tracking-widest text-gray-900 uppercase title-font">Contact</h2>
+                  <h2 class="mb-3 text-sm font-medium tracking-widest text-gray-900 uppercase title-font">Connect</h2>
                   <nav class="mb-10 list-none">
                       <li class="mt-3">
-                          <a class="text-gray-500 cursor-pointer hover:text-gray-900">Send a Message</a>
+                          <a href="https://www.linkedin.com/in/arnav-gupta-a810ba260/" class="text-gray-500 cursor-pointer hover:text-gray-900">Arnav Gupta</a>
                       </li>
                       <li class="mt-3">
-                          <a class="text-gray-500 cursor-pointer hover:text-gray-900">Request a Quote</a>
+                          <a href="https://www.linkedin.com/in/divyanshu-mittal-3b6499257/" class="text-gray-500 cursor-pointer hover:text-gray-900">Divyanshu Mittal</a>
                       </li>
                       <li class="mt-3">
-                          <a class="text-gray-500 cursor-pointer hover:text-gray-900">+123-456-7890</a>
+                          <a href="https://www.linkedin.com/in/navansh-krishna-goswami-341713248/" class="text-gray-500 cursor-pointer hover:text-gray-900">Navansh Goswami</a>
                       </li>
+                      <li class="mt-4">
+                        <a href="" class="text-gray-500 cursor-pointer hover:text-gray-900">Sarthak Kala</a>
+                    </li>
                   </nav>
               </div>
           </div>

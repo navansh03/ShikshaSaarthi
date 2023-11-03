@@ -1,5 +1,6 @@
 from django.db import models
 from users.models import CustomUser
+from phone_field import PhoneField
 
 class Course(models.Model):
     name=models.CharField(max_length=30, null =False)
@@ -55,12 +56,15 @@ class UserCourse(models.Model):
     def __str__(self):
         return f"{self.user.first_name ,self.course.name}"
     
+    class Meta:
+        unique_together = ('user', 'course')
 
 
 class Contact(models.Model):
     name=models.CharField(max_length=200)
-    email=models.EmailField()
+    phone = PhoneField(blank=True, help_text='Contact phone number')
     subject=models.TextField()
+    message=models.TextField(default="hello")
     
     def __str__(self):
         return f"{self.name}"

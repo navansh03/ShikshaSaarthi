@@ -20,7 +20,8 @@ def CourseOverview(request,slug):
     print(video)
     course_id=Course.objects.get(slug=slug)
     try:
-        check_enroll=UserCourse.objects.get(user=request.user,course=course_id)
+        check_enroll=UserCourse.objects.filter(user=request.user,course=course_id)
+        print(check_enroll)
     except UserCourse.DoesNotExist:
         check_enroll=None
 
@@ -73,12 +74,17 @@ def index(request):
         name=request.POST.get('name')
         email=request.POST.get('email')
         subject=request.POST.get('subject')
+        message=request.POST.get('message')
         contact.name=name
         contact.email=email
         contact.subject=subject
         contact.save()
+
         
+
     return render(request,'Resources/contact_us.html')
 
 
 
+def index2(request):
+    return render(request,'Resources/contact_success.html')

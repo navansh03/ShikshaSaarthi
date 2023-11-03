@@ -1,13 +1,9 @@
 
 .row{
-    height: 1000px;
-    /* background-image: url(../images/bg3.jpg);
-    background-size:cover;
-    display: flex;
-    justify-content: center;
-    align-items:center;
-    padding: none;
-    z-index: -1000; */
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 
@@ -35,9 +31,6 @@
 }
 
 .container{
-    
-    margin-left: 0px;
-    margin-right: 0px;
     padding-left: 0px;
     padding-right: 0px;
 }

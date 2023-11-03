@@ -35,7 +35,7 @@ class UserRegistrationForm(UserCreationForm):
         auth_token = settings.TWILIO_AUTH_TOKEN
         client = Client(account_sid, auth_token)
 
-        otp = random.randint(999,9999)# Generate a random OTP here
+        otp = random.randint(999,6969)# Generate a random OTP here
 
         message = client.messages.create(
             body=f'Your OTP is: {otp}',
