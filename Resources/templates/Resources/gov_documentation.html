@@ -2,7 +2,6 @@
 {% load static %}
 {% block content %}
 
-<h1>Government Policies</h1>
 <style>
     .filterDiv {
       float: left;
@@ -44,79 +43,127 @@
     }
     </style>
     <body>
-    
-    <div id="myBtnContainer">
-      <button class="btn active" onclick="filterSelection('all')"> Show all</button>
-      <button class="btn" onclick="filterSelection('education')"> Educational Policies</button>
-      <button class="btn" onclick="filterSelection('job')"> Jobs</button>
-      <button class="btn" onclick="filterSelection('scholarship')"> Educational Scholarships</button>
-      <button class="btn" onclick="filterSelection('')"> Colors</button>
-    </div>
-    
-    <div class="container">
-      <btn class="filterDiv education bmw" onclick="showtext()">BMW</btn>
-      <btn class="filterDiv scholarship disabilities" onclick="showtext()">Scholarships for students with disabilities</btn>
-      <btn class="filterDiv education" onclick="showtext()">Volvo</btn>
-      <btn class="filterDiv colors" onclick="showtext()">Red</btn>
-      <btn class="filterDiv education" onclick="showtext()">Ford</btn>
-      <btn class="filterDiv colors" onclick="showtext()">Blue</btn>
-      <btn class="filterDiv job" onclick="showtext()"> Cat</btn>
-      <btn class="filterDiv job" onclick="showtext()">Dog</btn>
-      <btn class="filterDiv scholarship" onclick="showtext()">Scholarships for Minorities</btn>
-      <btn class="filterDiv scholarship job" onclick="showtext()">Scholarships for Labour Workers</btn>
-      <btn class="filterDiv scholarship" onclick="showtext()">Scholarships for Backward Classes</btn>
-      <btn class="filterDiv scholarship" onclick="showtext()">Scholarships for Higher Education</btn>
-      <btn class="filterDiv job" onclick="showtext()">Cow</btn>
-    </div>
-    <div class="text-about">
-      <div class="bmw">It is a BMW</div>
-      <div class="disabilities">Students with disabilities</div>
-    </div>
-    <script>
-    
-    function filterSelection(c) {
-      var x, i;
-      x = document.getElementsByClassName("filterDiv");
-      if (c == "all") c = "";
-      for (i = 0; i < x.length; i++) {
-        RemoveClass(x[i], "show");
-        if (x[i].className.indexOf(c) > -1) AddClass(x[i], "show");
-      }
-    }
-    
-    function AddClass(element, name) {
-      var i, arr1, arr2;
-      arr1 = element.className.split(" ");
-      arr2 = name.split(" ");
-      for (i = 0; i < arr2.length; i++) {
-        if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
-      }
-    }
-    
-    function RemoveClass(element, name) {
-      var i, arr1, arr2;
-      arr1 = element.className.split(" ");
-      arr2 = name.split(" ");
-      for (i = 0; i < arr2.length; i++) {
-        while (arr1.indexOf(arr2[i]) > -1) {
-          arr1.splice(arr1.indexOf(arr2[i]), 1);     
-        }
-      }
-      element.className = arr1.join(" ");
-    }
-    
-    // Add active class to the current button (highlight it)
-    var btnContainer = document.getElementById("myBtnContainer");
-    var btns = btnContainer.getElementsByClassName("btn");
-    for (var i = 0; i < btns.length; i++) {
-      btns[i].addEventListener("click", function(){
-        var current = document.getElementsByClassName("active");
-        current[0].className = current[0].className.replace(" active", "");
-        this.className += " active";
-      });
-    }
-    </script>
 
+      <h1 class="page-heading">Government Policies</h1>
+      
+      <div id="myBtnContainer">
+          <button class="btn active" data-filter="all"> Show all</button>
+          <button class="btn" data-filter="education"> Educational Policies</button>
+          <button class="btn" data-filter="job"> Jobs</button>
+          <button class="btn" data-filter="scholarship"> Educational Scholarships</button>
+          <button class="btn" data-filter=""> Colors</button>
+      </div>
+      
+      <div class="container">
+          <button class="filterDiv education" data-related="bmw" onclick="showtext('bmw')">BMW</button>
+          <button class="filterDiv education" data-related="disabilities" onclick="showtext('disabilities')">Scholarships for students with disabilities</button>
+          <button class="filterDiv education" data-related="volvo" onclick="showtext('volvo')">Volvo</button>
+          <button class="filterDiv colors" data-related="red" onclick="showtext('red')">Red</button>
+          <button class="filterDiv education" data-related="ford" onclick="showtext('ford')">Ford</button>
+          <button class="filterDiv colors" data-related="blue" onclick="showtext('blue')">Blue</button>
+          <button class="filterDiv job" data-related="cat" onclick="showtext('cat')">Cat</button>
+          <button class="filterDiv job" data-related="dog" onclick="showtext('dog')">Dog</button>
+          <button class="filterDiv scholarship" data-related="minorities" onclick="showtext('minorities')">Scholarships for Minorities</button>
+          <button class="filterDiv scholarship job" data-related="labour" onclick="showtext('labour')">Scholarships for Labour Workers</button>
+          <button class="filterDiv scholarship" data-related="backward" onclick="showtext('backward')">Scholarships for Backward Classes</button>
+          <button class="filterDiv scholarship" data-related="higher" onclick="showtext('higher')">Scholarships for Higher Education</button>
+          <button class="filterDiv job" data-related="cow" onclick="showtext('cow')">Cow</button>
+      </div>
+      
+      <div class="text-about">
+          <div class="related-div bmw">It is a BMW</div>
+          <div class="related-div disabilities">Students with disabilities</div>
+          <div class="related-div volvo">Volvo description</div>
+          <div class="related-div red">Red color details</div>
+          <div class="related-div ford">Ford car information</div>
+          <div class="related-div blue">Blue color specifics</div>
+          <div class="related-div cat">Cat details</div>
+          <div class="related-div dog">Dog information</div>
+          <div class="related-div minorities">Scholarships for Minorities</div>
+          <div class="related-div labour">Scholarships for Labour Workers</div>
+          <div class="related-div backward">Scholarships for Backward Classes</div>
+          <div class="related-div higher">Scholarships for Higher Education</div>
+          <div class="related-div cow">Cow information</div>
+      </div>
+      
+      <script>
+          function filterSelection(c) {
+            var x, i;
+            x = document.getElementsByClassName("filterDiv");
+            if (c == "all") c = "";
+            for (i = 0; i < x.length; i++) {
+              RemoveClass(x[i], "show");
+              if (x[i].className.indexOf(c) > -1) AddClass(x[i], "show");
+            }
+            hideAllRelatedText();
+          }
+
+          function hideAllRelatedText() {
+        var relatedDivs = document.querySelectorAll('.related-div');
+        relatedDivs.forEach(function (div) {
+            div.style.display = 'none';
+        });
+    }
+      
+          function AddClass(element, name) {
+            var i, arr1, arr2;
+            arr1 = element.className.split(" ");
+            arr2 = name.split(" ");
+            for (i = 0; i < arr2.length; i++) {
+              if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+            }
+          }
+      
+          function RemoveClass(element, name) {
+            var i, arr1, arr2;
+            arr1 = element.className.split(" ");
+            arr2 = name.split(" ");
+            for (i = 0; i < arr2.length; i++) {
+              while (arr1.indexOf(arr2[i]) > -1) {
+                arr1.splice(arr1.indexOf(arr2[i]), 1);     
+              }
+            }
+            element.className = arr1.join(" ");
+          }
+      
+          function showAll() {
+              var x, i;
+              x = document.getElementsByClassName("filterDiv");
+              for (i = 0; i < x.length; i++) {
+                  x[i].classList.add("show");
+              }
+          }
+      
+          // Add active class to the current button (highlight it)
+          var btnContainer = document.getElementById("myBtnContainer");
+          var btns = btnContainer.getElementsByClassName("btn");
+          for (var i = 0; i < btns.length; i++) {
+              btns[i].addEventListener("click", function () {
+                  var current = document.getElementsByClassName("active");
+                  current[0].className = current[0].className.replace(" active", "");
+                  this.className += " active";
+                  var filter = this.getAttribute("data-filter");
+                  filterSelection(filter);
+              });
+          }
+      
+          // Hide the text-about div at the start
+          var textAbout = document.querySelector('.text-about');
+          var relatedDivs = textAbout.querySelectorAll('.related-div');
+          relatedDivs.forEach(function (div) {
+              div.style.display = 'none';
+          });
+      
+          // Function to display the related div when a button is selected
+          function showtext(btnClass) {
+            hideAllRelatedText();
+              var relatedDiv = textAbout.querySelector('.related-div.' + btnClass);
+              relatedDiv.style.display = 'block';
+          }
+         
+      </script>    
+      
+      </body>
 
 
 

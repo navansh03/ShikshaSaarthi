@@ -52,8 +52,6 @@ def mentor(request):
 def news(request):
     return render(request,template_name='Resources/news.html')
 
-def contact_us(request):
-    return render(request,template_name='Resources/contact_us.html')
 
 
 def Checkout(request,slug):
@@ -65,3 +63,6 @@ def Checkout(request,slug):
         
 
         return render(request,'Resources/checkout_confirmation.html',{'checkout_url': checkout_url})    
+
+
+# def contact_us(request):

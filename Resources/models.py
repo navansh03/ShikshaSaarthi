@@ -55,3 +55,6 @@ class UserCourse(models.Model):
     def __str__(self):
         return f"{self.user.first_name ,self.course.name}"
     
+
+# class Contact():
+#     model
