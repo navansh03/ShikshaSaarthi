@@ -17,3 +17,12 @@
     justify-content: center;
     align-items: center;
 }
+
+.box{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width:23% ;
+    height: 400px;
+    background-color: white;
+    padding: 20px 0px 15px 18px;
+}

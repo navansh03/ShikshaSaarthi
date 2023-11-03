@@ -163,6 +163,7 @@
 
       <main role="main" class="container">
         <div class="row">
+            {% block message %}{% endblock %}
           <div class="col-md-8">
             {% if messages %}
               {% for message in messages %}
