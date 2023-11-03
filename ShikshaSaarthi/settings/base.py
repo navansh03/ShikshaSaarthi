@@ -29,6 +29,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 INSTALLED_APPS = [
     "users.apps.UsersConfig",
     'Resources',
+    'ShikshaSaarthi',
     'crispy_forms',
     'crispy_bootstrap5',
     'crispy_tailwind',

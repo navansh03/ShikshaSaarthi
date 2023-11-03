@@ -7,16 +7,18 @@ from users import views as user_views
 from Resources import views as resources_views
 from wagtail.admin import urls as wagtailadmin_urls
 from Resources import urls as resources_urls
+from Resources import views as resources_views
 from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
-from . import views as 
+from . import views as home_urls
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("wagtail-admin/", include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),
     path('register/',user_views.register,name="register"),
-    path('contact_us/',views.contact_us,name='contact_us'),
+    path('contact_us/',resources_views.index,name='contact_us'),
     path('login/',auth_views.LoginView.as_view(template_name='users/login.html'),name='login'),
     path('logout/',auth_views.LogoutView.as_view(template_name='users/logout.html'),name='logout'),
     path('profile/',user_views.profile,name="profile"),

@@ -87,81 +87,112 @@
       </div>
       
       <script>
-          function filterSelection(c) {
+        let isAllVisible = true; // Variable to track the visibility of all buttons
+
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("filterDiv");
+  if (c == "all") {
+      if (isAllVisible) {
+          hideAllButtons(); // Hide all buttons if they are currently visible
+          isAllVisible = false; // Set the state to hidden
+      } else {
+          showAllButtons(); // Show all buttons if they are currently hidden
+          isAllVisible = true; // Set the state to visible
+      }
+  } else {
+      hideAllButtons(); // Hide all buttons
+      showFilteredButtons(c); // Show the filtered buttons
+  }
+  hideAllRelatedText(); // Hide all related text elements
+}
+
+function hideAllButtons() {
+  var buttons = document.querySelectorAll('.container .filterDiv');
+  buttons.forEach(function (button) {
+      button.style.display = 'none';
+  });
+}
+
+function showAllButtons() {
+  var buttons = document.querySelectorAll('.container .filterDiv');
+  buttons.forEach(function (button) {
+      button.style.display = 'block';
+  });
+}
+
+function showFilteredButtons(c) {
+  var buttons = document.querySelectorAll('.container .filterDiv.' + c);
+  buttons.forEach(function (button) {
+      button.style.display = 'block';
+  });
+}
+
+
+        function hideAllRelatedText() {
+      var relatedDivs = document.querySelectorAll('.related-div');
+      relatedDivs.forEach(function (div) {
+          div.style.display = 'none';
+      });
+  }
+    
+        function AddClass(element, name) {
+          var i, arr1, arr2;
+          arr1 = element.className.split(" ");
+          arr2 = name.split(" ");
+          for (i = 0; i < arr2.length; i++) {
+            if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+          }
+        }
+    
+        function RemoveClass(element, name) {
+          var i, arr1, arr2;
+          arr1 = element.className.split(" ");
+          arr2 = name.split(" ");
+          for (i = 0; i < arr2.length; i++) {
+            while (arr1.indexOf(arr2[i]) > -1) {
+              arr1.splice(arr1.indexOf(arr2[i]), 1);     
+            }
+          }
+          element.className = arr1.join(" ");
+        }
+    
+        function showAll() {
             var x, i;
             x = document.getElementsByClassName("filterDiv");
-            if (c == "all") c = "";
             for (i = 0; i < x.length; i++) {
-              RemoveClass(x[i], "show");
-              if (x[i].className.indexOf(c) > -1) AddClass(x[i], "show");
+                x[i].classList.add("show");
             }
-            hideAllRelatedText();
-          }
-
-          function hideAllRelatedText() {
-        var relatedDivs = document.querySelectorAll('.related-div');
+        }
+    
+        // Add active class to the current button (highlight it)
+        var btnContainer = document.getElementById("myBtnContainer");
+        var btns = btnContainer.getElementsByClassName("btn");
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function () {
+                var current = document.getElementsByClassName("active");
+                current[0].className = current[0].className.replace(" active", "");
+                this.className += " active";
+                var filter = this.getAttribute("data-filter");
+                filterSelection(filter);
+            });
+        }
+    
+        // Hide the text-about div at the start
+        var textAbout = document.querySelector('.text-about');
+        var relatedDivs = textAbout.querySelectorAll('.related-div');
         relatedDivs.forEach(function (div) {
             div.style.display = 'none';
         });
-    }
-      
-          function AddClass(element, name) {
-            var i, arr1, arr2;
-            arr1 = element.className.split(" ");
-            arr2 = name.split(" ");
-            for (i = 0; i < arr2.length; i++) {
-              if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
-            }
-          }
-      
-          function RemoveClass(element, name) {
-            var i, arr1, arr2;
-            arr1 = element.className.split(" ");
-            arr2 = name.split(" ");
-            for (i = 0; i < arr2.length; i++) {
-              while (arr1.indexOf(arr2[i]) > -1) {
-                arr1.splice(arr1.indexOf(arr2[i]), 1);     
-              }
-            }
-            element.className = arr1.join(" ");
-          }
-      
-          function showAll() {
-              var x, i;
-              x = document.getElementsByClassName("filterDiv");
-              for (i = 0; i < x.length; i++) {
-                  x[i].classList.add("show");
-              }
-          }
-      
-          // Add active class to the current button (highlight it)
-          var btnContainer = document.getElementById("myBtnContainer");
-          var btns = btnContainer.getElementsByClassName("btn");
-          for (var i = 0; i < btns.length; i++) {
-              btns[i].addEventListener("click", function () {
-                  var current = document.getElementsByClassName("active");
-                  current[0].className = current[0].className.replace(" active", "");
-                  this.className += " active";
-                  var filter = this.getAttribute("data-filter");
-                  filterSelection(filter);
-              });
-          }
-      
-          // Hide the text-about div at the start
-          var textAbout = document.querySelector('.text-about');
-          var relatedDivs = textAbout.querySelectorAll('.related-div');
-          relatedDivs.forEach(function (div) {
-              div.style.display = 'none';
-          });
-      
-          // Function to display the related div when a button is selected
-          function showtext(btnClass) {
-            hideAllRelatedText();
-              var relatedDiv = textAbout.querySelector('.related-div.' + btnClass);
-              relatedDiv.style.display = 'block';
-          }
-         
-      </script>    
+    
+        // Function to display the related div when a button is selected
+        function showtext(btnClass) {
+          hideAllRelatedText();
+            var relatedDiv = textAbout.querySelector('.related-div.' + btnClass);
+            relatedDiv.style.display = 'block';
+        }
+       
+    </script>       
       
       </body>
 

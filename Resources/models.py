@@ -56,5 +56,14 @@ class UserCourse(models.Model):
         return f"{self.user.first_name ,self.course.name}"
     
 
-# class Contact():
-#     model
+
+class Contact(models.Model):
+    name=models.CharField(max_length=200)
+    email=models.EmailField()
+    subject=models.TextField()
+    
+    def __str__(self):
+        return f"{self.name}"
+
+
+
