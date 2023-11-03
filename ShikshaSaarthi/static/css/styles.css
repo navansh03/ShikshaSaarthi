@@ -1,12 +1,14 @@
 
 .row{
-    height: 850px;
-    background-image: url(../images/bg2.jpg);
+    height: 1000px;
+    background-image: url(../images/bg3.jpg);
     background-size:cover;
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items:center;
+    padding: none;
 }
+
 
 .panel-1{
     height: 260px;
@@ -25,4 +27,16 @@
     height: 400px;
     background-color: white;
     padding: 20px 0px 15px 18px;
+}
+
+.h96{
+    height: 24rem;
+}
+
+.container{
+    
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
 }
