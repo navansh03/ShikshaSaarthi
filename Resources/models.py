@@ -1,4 +1,5 @@
 from django.db import models
+from users.models import CustomUser
 
 class Course(models.Model):
     name=models.CharField(max_length=30, null =False)
@@ -43,6 +44,14 @@ class Video(models.Model):
     video_url=models.CharField(max_length=150,null=False,default=0)
     is_preview=models.BooleanField(default=False)
 
-    def __str__(self):
-        return f"{self.title}"
 
+
+
+class UserCourse(models.Model):
+    user=models.ForeignKey(CustomUser,on_delete=models.CASCADE)
+    course=models.ForeignKey(Course,  on_delete=models.CASCADE)
+    date=models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user.first_name ,self.course.name}"
+    
