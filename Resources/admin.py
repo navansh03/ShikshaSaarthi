@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Course,Prerequisites,Learning,Video,Subject,UserCourse
+from .models import Course,Prerequisites,Learning,Video,Subject,UserCourse,Contact
+
 
 
 # Register your models here.
@@ -28,3 +29,4 @@ admin.site.register(Subject)
 admin.site.register(Video)
 admin.site.register(UserCourse)
 
+admin.site.register(Contact)

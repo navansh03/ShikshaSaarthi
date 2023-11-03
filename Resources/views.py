@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Course,Learning,Subject,Video,UserCourse
+from .models import Course,Learning,Subject,Video,UserCourse,Contact
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 
@@ -66,3 +66,19 @@ def Checkout(request,slug):
 
 
 # def contact_us(request):
+
+def index(request):
+    if request.method=="POST":
+        contact=Contact()
+        name=request.POST.get('name')
+        email=request.POST.get('email')
+        subject=request.POST.get('subject')
+        contact.name=name
+        contact.email=email
+        contact.subject=subject
+        contact.save()
+        
+    return render(request,'Resources/contact_us.html')
+
+
+
