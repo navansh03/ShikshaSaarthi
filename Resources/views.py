@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from .models import Course
+from .models import Course,Learning,Subject,Video,UserCourse
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 
 
 # Create your views here.
@@ -13,22 +14,29 @@ def educational_content(request):
 def CourseOverview(request,slug):
     # print(slug)
     course=Course.objects.get(slug=slug)
+    learnings=Learning.objects.filter(course=course)
+    subject=Subject.objects.filter(course=course)
+    video=Video.objects.filter(course=course)
+    print(video)
+    course_id=Course.objects.get(slug=slug)
+    try:
+        check_enroll=UserCourse.objects.get(user=request.user,course=course_id)
+    except UserCourse.DoesNotExist:
+        check_enroll=None
+
+    # video=Video.objects.filter(subject=subject).first()
+    # print(video)
+
     context={
         "course":course,
-        # "video":video
+        "video":video,
+        "learnings":learnings,
+        "subjects":subject,
+        'check_enroll':check_enroll,
+        # "video":video,
     }
     return render(request,template_name="Resources/course_overview.html",context=context)
 
-
-def VideoPlayer(request,slug,video_number):
-    video=video.objects.get(slug=slug)
-    video2=video.objects.get(video_number)
-    
-    context={
-        "video":video,
-        "video" : video2
-    }
-    return render(request,template_name="Resources/video_player.html",context=context)
 
 
 def job_listings(request):
@@ -48,3 +56,12 @@ def contact_us(request):
     return render(request,template_name='Resources/contact_us.html')
 
 
+def Checkout(request,slug):
+        course=Course.objects.get(slug=slug)
+        course=UserCourse(user=request.user,course=course)
+        course.save()
+        checkout_url = reverse('checkout', args=['your-slug-value'])
+        print(checkout_url)
+        
+
+        return render(request,'Resources/checkout_confirmation.html',{'checkout_url': checkout_url})    

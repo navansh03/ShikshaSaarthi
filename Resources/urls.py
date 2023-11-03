@@ -12,6 +12,8 @@ urlpatterns = [
     path('mentor/',resources_views.mentor,name='mentor'),
     path('news/',resources_views.news,name='news'),
     path('gov_documentation/',resources_views.gov_documentations,name='gov_documentation'),
+    path('course/checkout/<slug:slug>',resources_views.Checkout,name='checkout'),
+         
 
 
 ]
