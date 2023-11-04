@@ -27,6 +27,15 @@ def CourseOverview(request,slug):
 
     # video=Video.objects.filter(subject=subject).first()
     # print(video)
+    if check_enroll and len(check_enroll) > 0:
+        # User is enrolled in the course.
+        button_text = "Already Enrolled"
+    else:
+        # User is not enrolled in the course.
+        button_text = "Enroll"
+
+
+    
 
     context={
         "course":course,
@@ -34,6 +43,7 @@ def CourseOverview(request,slug):
         "learnings":learnings,
         "subjects":subject,
         'check_enroll':check_enroll,
+        "button_text":button_text,
         # "video":video,
     }
     return render(request,template_name="Resources/course_overview.html",context=context)

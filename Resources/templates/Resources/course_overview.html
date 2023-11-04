@@ -3,28 +3,6 @@
 {% load static %}
 
 
-    <!-- BREADCRUMBS
-    ================================================== -->
-    <div class="container">
-        <nav class="mb-5 mb-md-8 mt-2" aria-label="breadcrumb">
-            <ol class="breadcrumb breadcrumb-scroll">
-                <li class="breadcrumb-item">
-                    <a class="text-gray-800" href="#">
-                        Home
-                    </a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a class="text-gray-800" href="#">
-                        educational_content
-                    </a>
-                </li>
-                <li class="breadcrumb-item text-gray-800 active" aria-current="page">
-                    {{course.name}}
-                </li>
-            </ol>
-        </nav>
-    </div>
-
     <!-- COURSE
     ================================================== -->
     <div class="container">
@@ -35,11 +13,7 @@
                 </h1>
                 {% if check_enroll is None %}
                     <a href="{% url 'checkout' course.slug %}"><button data-ripple-light="true" type="button" class="select-none rounded-lg bg-blue-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none mr-20">
-                        Enroll
-                    </button></a>
-                {% else %}
-                    <a href="#"><button  type="button" class="select-none rounded-lg bg-blue-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active active:shadow-none disabled:pointer-events disabled:opacity-200 disabled:shadow-none mr-20 disabled">
-                        Already Enrolled
+                        {{button_text}}
                     </button></a>
                 {% endif %}
                 <p class="me-xl-13 mb-5">{{course.description}}</p>
@@ -141,8 +115,8 @@
                                         <div class="text-secondary d-flex">
                                             <i class="bi bi-youtube" aria-hidden="true" style="color:red"></i>
                                         </div>
-                                        {% if v.preview == True %}
-                                        <a href="http://www.youtube.com/watch?v={{v.video_url}}"class"rounded" data-fancybox>
+                                        {% if v.preview == true %}
+                                        <a href="http://www.youtube.com/watch?v={{v.video_url}}" class="rounded" data-fancybox>
 
                                             <div class="ms-4">
                                             {{v.title}}
