@@ -10,7 +10,6 @@ from Resources import urls as resources_urls
 from Resources import views as resources_views
 from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
-from . import views as home_urls
 
 
 urlpatterns = [
@@ -22,7 +21,7 @@ urlpatterns = [
     path('contact_form_successfull/',resources_views.index2,name='contact_success'),
     path('login/',auth_views.LoginView.as_view(template_name='users/login.html'),name='login'),
     path('logout/',auth_views.LogoutView.as_view(template_name='users/logout.html'),name='logout'),
-    path('profile/',user_views.profile,name="profile"),
+    # path('profile/',user_views.profile,name="profile"),
     path('',user_views.landing_page,name="home"),
     path('verification/',user_views.otp_verification,name='otp_verification'),
     path('resources/',include(resources_urls)),
