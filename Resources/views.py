@@ -17,14 +17,13 @@ def CourseOverview(request,slug):
     learnings=Learning.objects.filter(course=course)
     subject=Subject.objects.filter(course=course)
     video=Video.objects.filter(course=course)
-    print(video)
     course_id=Course.objects.get(slug=slug)
     try:
         check_enroll=UserCourse.objects.filter(user=request.user,course=course_id)
         print(check_enroll)
     except UserCourse.DoesNotExist:
         check_enroll=None
-
+        print(check_enroll)
     # video=Video.objects.filter(subject=subject).first()
     # print(video)
     if check_enroll and len(check_enroll) > 0:
@@ -33,6 +32,7 @@ def CourseOverview(request,slug):
     else:
         # User is not enrolled in the course.
         button_text = "Enroll"
+<<<<<<< HEAD
 
 
     
@@ -45,7 +45,17 @@ def CourseOverview(request,slug):
         'check_enroll':check_enroll,
         "button_text":button_text,
         # "video":video,
+=======
+
+    context = {
+    "course": course,
+    "learnings": learnings,
+    "subject": subject,
+    "video": video,
+    "button_text": button_text,
+>>>>>>> fed84834b8fba210d5cf5665580cf8ee2474ca49
     }
+
     return render(request,template_name="Resources/course_overview.html",context=context)
 
 

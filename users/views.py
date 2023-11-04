@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib import messages
 from .forms import UserRegistrationForm
 # ,UserUpdateForm,ProfileUpdateForm
+from .models import CustomUser
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse
@@ -27,28 +28,7 @@ def register(request):
         form = UserRegistrationForm()
     return render(request, 'users/register.html', {'form': form})
 
-@login_required
-def profile(request):
-    # if request.method == 'POST':
-    #     u_form=UserUpdateForm(request.POST,instance=request.user)
-    #     p_form=ProfileUpdateForm(request.POST,request.FILES,instance=request.user.profile)
 
-    #     if u_form.is_valid() and p_form.is_valid():
-    #         u_form.save()
-    #         p_form.save()
-    #         messages.success(request,f'Your Account has been update, Thanks !')
-    #         return redirect('profile')
-    # else:
-    #     u_form=UserUpdateForm(instance=request.user)
-    #     p_form=ProfileUpdateForm(instance=request.user.profile)
-
-        
-
-    # context={
-    #     'u_form':u_form,
-    #     'p_form':p_form
-    # }
-    return render(request,'users/profile.html')
 
 def otp_verification(request):
     if request.method == 'POST':
@@ -73,4 +53,11 @@ def otp_verification(request):
 
 @login_required
 def landing_page(request):
-    return render(request,'users/landing_page.html')
+    # course=Course.objects.get(slug=slug)
+    user = request.user
+    print(user)
+    context={
+        "user":user,
+    }
+
+    return render(request,'users/landing_page.html',context=context)
